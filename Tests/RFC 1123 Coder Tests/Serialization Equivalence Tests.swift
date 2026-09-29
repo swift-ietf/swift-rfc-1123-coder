@@ -1,6 +1,5 @@
 import ASCII
-import ASCII_Serializer
-import Binary_Serializable
+import Binary
 import Byte
 import RFC_1123
 import RFC_1123_Coder
