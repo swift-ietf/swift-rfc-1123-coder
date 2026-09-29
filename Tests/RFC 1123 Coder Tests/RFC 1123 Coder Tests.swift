@@ -78,13 +78,13 @@ extension `RFC 1123 Coder Tests`.`Domain Tests` {
     @Test
     func `round-trips through its text form`() throws {
         let domain = try RFC_1123.Domain("api.v1.example.com")
-        #expect(try domain.encoded() == "api.v1.example.com")
+        #expect(try RFC_1123.Domain.coder.serialize(domain) == "api.v1.example.com")
     }
 
     @Test
-    func `decodes through Coder.Codable`() throws {
+    func `decodes through the domain coder`() throws {
         var input: ArraySlice<Byte> = "example.com"
-        let domain = try RFC_1123.Domain(decoding: &input)
+        let domain = try RFC_1123.Domain.coder.parse(&input)
         #expect(domain.sld! == "example")
         #expect(input.isEmpty)
     }
@@ -125,6 +125,6 @@ extension `RFC 1123 Coder Tests`.`Label Tests` {
     @Test
     func `round-trips through its text form`() throws {
         let label = try RFC_1123.Domain.Label("3com")
-        #expect(try label.encoded() == "3com")
+        #expect(try RFC_1123.Domain.Label.coder.serialize(label) == "3com")
     }
 }
