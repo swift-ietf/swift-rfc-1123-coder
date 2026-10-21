@@ -1,9 +1,8 @@
 public import Byte
 public import Coder
 public import Cursor
-public import Cursor
-public import RFC_1123
 import Parser
+public import RFC_1123
 import Serializer
 
 extension RFC_1123.Domain.Label {
